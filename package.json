@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/TheCodeDestroyer/watchdog/issues"
   },
-  "homepage": "https://github.com/TheCodeDestroyer/watchdog#readme"
+  "homepage": "https://github.com/TheCodeDestroyer/watchdog#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.5.1"
+  }
 }
