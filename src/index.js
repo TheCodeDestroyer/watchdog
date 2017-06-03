@@ -15,22 +15,22 @@ if (err) {
 
 const github = githubHook({
     host: '0.0.0.0',
-    port: 9898,
+    port: process.env.PORT || 3000,
     path: '/pushrouteyouwontguess',
-    secret: process.GITHUB_WEBHOOK_SECRET
+    secret: process.env.GITHUB_WEBHOOK_SECRET
 });
 
 const appConfig = {
     mailTitle: 'GitHub WebHook - Triggered',
-    mailingList: process.MAILING_LIST.split(','),
-    pathList: process.FILE_PATH_LIST.split(',')
+    mailingList: process.env.MAILING_LIST.split(','),
+    pathList: process.env.FILE_PATH_LIST.split(',')
 };
 
 const mailerConfig = {
-    hostname: process.SMTP_HOSTNAME,
+    hostname: process.env.SMTP_HOSTNAME,
     port: 465,
-    username: process.SMTP_USERNAME,
-    pass: process.SMTP_PASSWORD
+    username: process.env.SMTP_USERNAME,
+    pass: process.env.SMTP_PASSWORD
 };
 
 const mailerWrapper = new MailerWrapper(mailerConfig, appConfig.mailTitle, appConfig.mailingList);
