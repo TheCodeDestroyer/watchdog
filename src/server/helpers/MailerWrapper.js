@@ -24,16 +24,16 @@ export class MailerWrapper {
         const mailOptions = {
             from: '"Nace Logar" <the.code.destroyer@gmail.com>',
             to: this.mailingList.join(','),
-            subject: 'Hello ✔',
+            subject: this.mailTitle,
             html: this.createHtmlBody(pushInfo)
         };
 
         this.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.log(error);
+                process.stdout.write(error);
             }
             else {
-                console.log('Message %s sent: %s', info.messageId, info.response);
+                process.stdout.write('Message %s sent: %s\n', info.messageId, info.response);
             }
         });
     }
@@ -42,19 +42,19 @@ export class MailerWrapper {
         let htmlBody = `<h1>${this.mailTitle}</h1><br>`;
 
         if (!_.isEmpty(pushInfo.removedFilesArray)) {
-            htmlBody += this.createHtmlList('Removed Files', pushInfo.removedFilesArray, pushInfo.repoName, pushInfo.branchName);
+            htmlBody += MailerWrapper.createHtmlList('Removed Files', pushInfo.removedFilesArray, pushInfo.repoName, pushInfo.branchName);
         }
         if (!_.isEmpty(pushInfo.addedFilesArray)) {
-            htmlBody += this.createHtmlList('Added Files', pushInfo.addedFilesArray, pushInfo.repoName, pushInfo.branchName);
+            htmlBody += MailerWrapper.createHtmlList('Added Files', pushInfo.addedFilesArray, pushInfo.repoName, pushInfo.branchName);
         }
         if (!_.isEmpty(pushInfo.modifiedFilesArray)) {
-            htmlBody += this.createHtmlList('Modified Files', pushInfo.modifiedFilesArray, pushInfo.repoName, pushInfo.branchName);
+            htmlBody += MailerWrapper.createHtmlList('Modified Files', pushInfo.modifiedFilesArray, pushInfo.repoName, pushInfo.branchName);
         }
 
         return htmlBody;
     }
 
-    createHtmlList(title, collection, repoName, branchName) {
+    static createHtmlList(title, collection, repoName, branchName) {
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';
         _.forEach(collection, (item) => {
