@@ -15,7 +15,7 @@ if (err) {
 
 const github = githubHook({
     host: '0.0.0.0',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 9898,
     path: '/pushrouteyouwontguess',
     secret: process.env.GITHUB_WEBHOOK_SECRET
 });
@@ -32,6 +32,11 @@ const mailerConfig = {
     username: process.env.SMTP_USERNAME,
     pass: process.env.SMTP_PASSWORD
 };
+
+// process.stdout.write(`MAILING LIST: ${appConfig.mailingList}`);
+// process.stdout.write(`PATH LIST: ${appConfig.pathList}`);
+// process.stdout.write(`SMTP HOSTNAME: ${mailerConfig.hostname}`);
+// process.stdout.write(`SMTP USER: ${mailerConfig.username}`);
 
 const mailerWrapper = new MailerWrapper(mailerConfig, appConfig.mailTitle, appConfig.mailingList);
 
