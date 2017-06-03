@@ -21,11 +21,11 @@
   "dependencies": {
     "githubhook": "^1.7.1",
     "lodash": "^4.17.4",
-    "nodemailer": "^4.0.1"
+    "nodemailer": "^4.0.1",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
     "eslint": "^3.19.0",
     "eslint-config-tcd": "0.0.8"
   }
