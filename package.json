@@ -18,6 +18,9 @@
     "url": "https://github.com/TheCodeDestroyer/watchdog/issues"
   },
   "homepage": "https://github.com/TheCodeDestroyer/watchdog#readme",
+  "engines": {
+    "node": "8.0.0"
+  },
   "dependencies": {
     "githubhook": "^1.7.1",
     "lodash": "^4.17.4",
