@@ -29,7 +29,7 @@ export class MailerWrapper {
 
         this.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                process.stdout.write(error);
+                process.stderr.write(error);
             }
             else {
                 process.stdout.write(`Message ${info.messageId} sent: ${info.response}\n`);
@@ -56,8 +56,8 @@ export class MailerWrapper {
     static createHtmlList(title, collection, repoName, branchName) {
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';
-        _.forEach(collection, (item) => {
-            const anchor = `<a target="_blank" href="https://github.com/${repoName}/blob/${branchName}/${item}">${item}</a>`;
+        _.forEach(collection, (filePath) => {
+            const anchor = `<a target="_blank" href="https://github.com/${repoName}/blob/${branchName}/${filePath}">${filePath}</a>`;
             html += `<li>${anchor}</li><br>`;
         });
         html += '</ul><br>';
