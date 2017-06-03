@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/TheCodeDestroyer/watchdog#readme",
   "engines": {
-    "node": "8.0.0"
+    "node": "8.0.0",
+    "npm": "5.0.0"
   },
   "dependencies": {
     "githubhook": "^1.7.1",
