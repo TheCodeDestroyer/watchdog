@@ -7,9 +7,9 @@ import { InitHelper } from './helpers/InitHelper';
 
 const err = InitHelper.checkConfig();
 if (err) {
-    process.stdout.write('Server not properly configured!\n');
-    process.stdout.write('Missing ENV variable/s: %s\n', err);
-    process.stdout.write('Shutting down...\n');
+    process.stderr.write('Server not properly configured!\n');
+    process.stderr.write(`Missing ENV variable/s:  ${err}\n`);
+    process.stderr.write('Shutting down...\n');
     process.exit();
 }
 

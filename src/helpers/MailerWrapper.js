@@ -33,7 +33,7 @@ export class MailerWrapper {
                 process.stdout.write(error);
             }
             else {
-                process.stdout.write('Message %s sent: %s\n', info.messageId, info.response);
+                process.stdout.write(`Message ${info.messageId} sent: ${info.response}\n`);
             }
         });
     }
