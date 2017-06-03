@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node-babel src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/TheCodeDestroyer/watchdog#readme",
   "dependencies": {
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "githubhook": "^1.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-tcd": "0.0.8"
   }
 }
