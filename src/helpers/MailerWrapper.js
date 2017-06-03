@@ -22,7 +22,7 @@ export class MailerWrapper {
 
     sendMail(pushInfo) {
         const mailOptions = {
-            from: '"Nace Logar" <the.code.destroyer@gmail.com>',
+            from: _.first(this.mailingList),
             to: this.mailingList.join(','),
             subject: this.mailTitle,
             html: this.createHtmlBody(pushInfo)
