@@ -1,11 +1,13 @@
 import * as _ from 'lodash';
 import * as nodemailer from 'nodemailer';
+import { PushInfoChecker } from './PushInfoChecker';
 
 export class MailerWrapper {
-    constructor(smtpConfig, mailTitle, mailingList) {
+    constructor(smtpConfig, appConfig) {
         this.initTransporter(smtpConfig);
-        this.mailingList = mailingList;
-        this.mailTitle = mailTitle;
+        this.mailingList = appConfig.mailingList;
+        this.mailTitle = appConfig.mailTitle;
+        this.pathList = appConfig.pathList;
     }
 
     initTransporter(smtpConfig) {
@@ -57,6 +59,9 @@ export class MailerWrapper {
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';
         _.forEach(collection, (filePath) => {
+            if (PushInfoChecker.renderFileCheck(this.pathList, filePath)) {
+                return;
+            }
             const anchor = `<a target="_blank" href="https://github.com/${repoName}/blob/${branchName}/${filePath}">${filePath}</a>`;
             html += `<li>${anchor}</li><br>`;
         });

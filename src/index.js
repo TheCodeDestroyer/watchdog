@@ -38,7 +38,7 @@ const mailerConfig = {
 // process.stdout.write(`SMTP HOSTNAME: ${mailerConfig.hostname}`);
 // process.stdout.write(`SMTP USER: ${mailerConfig.username}`);
 
-const mailerWrapper = new MailerWrapper(mailerConfig, appConfig.mailTitle, appConfig.mailingList);
+const mailerWrapper = new MailerWrapper(mailerConfig, appConfig);
 
 github.on('push', (repo, ref, data) => {
     const branchNameObject = _.chain(ref.split('/')).last();

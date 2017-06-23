@@ -20,6 +20,25 @@ export class PushInfoChecker {
         return shouldSend;
     }
 
+    static renderFileCheck(appConfig, changedFile) {
+        let shouldRender = false;
+        _.forEach(appConfig.pathList, (pathInfo) => {
+            if (shouldRender) {
+                return;
+            }
+
+            if (_.includes(pathInfo, '*')) {
+                const correctedPathInfo = _.replace(pathInfo, '*', '');
+                shouldRender = _.includes(changedFile, correctedPathInfo);
+            }
+            else {
+                shouldRender = changedFile === pathInfo;
+            }
+        });
+
+        return shouldRender;
+    }
+
     static commitIncludes(pushInfo, pathInfo) {
         let commitIncludesPath = false;
 
@@ -75,5 +94,4 @@ export class PushInfoChecker {
 
         return commitEqualsPath;
     }
-
 }
