@@ -20,9 +20,9 @@ export class PushInfoChecker {
         return shouldSend;
     }
 
-    static renderFileCheck(appConfig, changedFile) {
+    static renderFileCheck(pathList, changedFile) {
         let shouldRender = false;
-        _.forEach(appConfig.pathList, (pathInfo) => {
+        _.forEach(pathList, (pathInfo) => {
             if (shouldRender) {
                 return;
             }
