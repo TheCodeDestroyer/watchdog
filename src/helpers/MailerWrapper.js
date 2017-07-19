@@ -56,17 +56,24 @@ export class MailerWrapper {
     }
 
     createHtmlList(title, collection, repoName, branchName) {
+        let fileRendered = false;
+        let resultHtml = '';
         let html = `<h3>${title}:</h3><br>`;
         html += '<ul>';
         _.forEach(collection, (filePath) => {
             if (!PushInfoChecker.renderFileCheck(this.pathList, filePath)) {
                 return;
             }
+            fileRendered = true;
             const anchor = `<a target="_blank" href="https://github.com/${repoName}/blob/${branchName}/${filePath}">${filePath}</a>`;
             html += `<li>${anchor}</li><br>`;
         });
         html += '</ul><br>';
 
-        return html;
+        if (fileRendered) {
+            resultHtml = html;
+        }
+
+        return resultHtml;
     }
 }
